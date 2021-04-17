@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Welcome TicoRide</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<script>
+
+    function fillTable(){
+
+        var desde = document.getElementById("from").value;
+        var hasta = document.getElementById("to").value;
+
+
+        var objetos = [];
+        for (var x=0; x < localStorage.length; x++){
+
+            const rideStr = localStorage.getItem(localStorage.key(x));
+
+            const rideObj = JSON.parse(rideStr);
+
+            var storedName = rideObj.rideName;
+
+            if(storedName == undefined){
+
+            }else if((rideObj.start == desde && rideObj.end == hasta) || (desde == ""  && hasta == "")){
+
+                var largo = Object.keys(rideObj).length;
+                var text = "";
+
+                objetos.push(rideObj);
+
+
+                for (i = 0; i < objetos.length; i++) { //displays multiple announcements
+
+                    text += "<tr>";
+                    text += "<td>" + objetos[i].rideName+ "</td>";//displaysname
+                    text += "<td>" + objetos[i].start+ "</td>";//displaysclub
+                    text += "<td>" + objetos[i].end+ "</td>";//displayscategory
+                    text += "<td>" + objetos[i].creador+ "</td>";//displayscategory
+                }
+                document.getElementById("cool").innerHTML = text;
+            }
+        }
+
+    }
+    function filtro(){
+        var desde = document.getElementById("from").value;
+        var hasta = document.getElementById("to").value;
+
+
+    }
+
+    </script>
+</head>
+<body onload = fillTable()>
+    <img src="logo.png" alt="Logo" class="center">
+    <br>
+    <br>
+    <h1> Welcome to TicoRide.com</h1>
+
+    <p align="center">
+    <a href=Login.html>
+    <button type="button" style="color:black; border: 2px solid #4CAF50; margin:auto; font-size: 20px; ">Login</button>
+        </a>
+        </p>
+
+    <p>Search for a ride</p>
+    <div class="div">
+        <form>
+            <label for="from">From:</label>
+            <input type="text" id="from" name="from">
+            <label for="to">To:</label>
+            <input type="text" id="to" name="to">
+            <input id= "create_btn" type="button" value="Find my ride" onclick="fillTable()">
+        </form>
+    </div>
+
+    <p>Rides found:</p>
+
+            <table class=center1>
+<thead>
+                  <tr>
+                    <th class="head">Name</th>
+                    <th class="head">Start</th>
+                    <th class="head">End</th>
+                    <th class="head">User</th>
+                                  </tr>
+</thead>
+<tbody id="cool">
+</tbody>
+
+</table>
+
+</body>
+</html>

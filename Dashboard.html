@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>DASHBOARD TicoRide</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+
+<script>
+    function fillTable(){
+
+        var objetos = [];
+        for (var x=0; x < localStorage.length; x++){
+
+            const rideStr = localStorage.getItem(localStorage.key(x));
+
+            const rideObj = JSON.parse(rideStr);
+
+            var storedName = rideObj.rideName;
+            var storedCreador = rideObj.creador;
+            var current = localStorage.getItem("currentUser");
+
+            if(storedName == undefined){
+
+            }else if(storedCreador == current){
+
+                var largo = Object.keys(rideObj).length;
+                var text = "";
+
+                objetos.push(rideObj);
+
+
+                for (i = 0; i < objetos.length; i++) { //displays multiple announcements
+
+                    text += "<tr>";
+                    text += "<td>" + objetos[i].rideName+ "</td>";
+                    text += "<td>" + objetos[i].start+ "</td>";
+                    text += "<td>" + objetos[i].end+ "</td>";
+                    text += "<td> <a href = EditarRide.html>" + "Edit"+ "</a></td>";
+                }
+                document.getElementById("cool").innerHTML = text;
+            }
+        }
+
+    }
+
+
+
+</script>
+</head>
+<body onload="fillTable()">
+<img src="logo.png" alt="Logo" class="center">
+    <br>
+    <br>
+ <div class="div1">
+    <button type="button" id="button1" style ="background-color: white; color: black">Dashboard</button>
+    <button type="button" id="button2" style ="background-color: lightgreen;">Rides</button>
+    <a href="Configuracion.html"> <button type="button" id="button3" style ="background-color: lightgreen;">Settings</button>  </a>
+
+    </div>
+
+
+  <br>
+    <p style="color:#1C4E77;font-size:26px;text-align:center;">
+    Dashboard
+    </p>
+    <p align="center">
+    <a href=CrearRide.html>
+    <button type="button" style="color:black; border: 2px solid #4CAF50; margin:auto; font-size: 20px; ">Create Ride</button>
+        </a>
+        </p>
+
+    <p> Your active rides:</p>
+  <table class=center1>
+<thead>
+                  <tr>
+                    <th class="head">Name</th>
+                    <th class="head">Start</th>
+                    <th class="head">End</th>
+                    <th class="head">Actions</th>
+                                  </tr>
+</thead>
+<tbody id="cool">
+</tbody>
+
+</table>
+
+
+    <p><a href="Inicio.html">Logout</a></p> <br>
+
+
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>REGISTER TicoRide</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+
+<script>
+
+    function store(){
+
+
+    var usuario = document.getElementById("user").value;
+    var nombre = document.getElementById('nombre').value;
+    var last = document.getElementById('apell').value;
+    var pw = document.getElementById('pass').value;
+    var phone = document.getElementById('phone').value;
+
+
+    const user = { name: usuario, password: pw, nombre: nombre, apellido: last, telefono:phone};
+
+    localStorage.setItem(usuario, JSON.stringify(user));
+
+    window.alert('Your account has been created');
+
+
+
+
+}
+    </script>
+</head>
+<body>
+
+<img src="logo.png" alt="Logo" class="center">
+    <br>
+    <br>
+<form class="center">
+
+
+    <label for="nombre">First name:</label><br>
+            <input type="text" id="nombre" name="nombre"><br>
+    <label for="apell">Last name:</label><br>
+            <input type="text" id="apell" name="apell"><br>
+    <label for="phone">Phone number:</label><br>
+            <input type="number" id="phone" name="phone"><br>
+            <label for="user">Username:</label><br>
+            <input type="text" id="user" name="user"><br>
+            <label for="pass">Password:</label><br>
+            <input type="password" id="pass" name="pass"><br>
+    <label for="pass1">Repeat Password:</label><br>
+            <input type="password" id="pass1" name="pass1"><br>
+            <p>Already an user? <a href="Login.html">Login here</a></p> <br>
+
+            <input id="rgstr_btn" type="submit" value="Register" onclick="store()">
+
+        </form>
+
+
+
+</body>
+</html>

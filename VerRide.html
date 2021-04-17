@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Your Ride TicoRide</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+
+<script>
+    function fill(){
+        var lastRide = localStorage.getItem("lastRide");
+
+        const rideStr = localStorage.getItem(lastRide);
+
+
+
+        const rideObj = JSON.parse(rideStr);
+
+
+        var storedName = rideObj.rideName;
+        var storedArrival = rideObj.arrival;
+        var storedDeparture = rideObj.departure;
+        var storedDescription = rideObj.description;
+        var storedStart = rideObj.start;
+        var storedEnd = rideObj.end;
+
+
+        document.getElementById("user").value = storedName;
+        document.getElementById("pass").value = storedStart;
+        document.getElementById("pass1").value = storedEnd;
+        document.getElementById("pass2").value = storedDescription;
+        document.getElementById("dept").value = storedDeparture;
+        document.getElementById("arrival").value = storedArrival;
+
+
+    }
+    </script>
+</head>
+<body onload="fill()">
+
+<img src="logo.png" alt="Logo" class="center">
+    <div class="div1">
+    <a href="Dashboard.html"> <button type="button" id="button1" style ="background-color: lightgreen;">Dashboard</button>  </a>
+    <button type="button" id="button2" style ="background-color: white; color: black;">Rides</button>
+    <a href="Configuracion.html"> <button type="button" id="button3" style ="background-color: lightgreen;">Settings</button>  </a>
+
+    </div><br>
+
+    <p style="color:#1C4E77;font-size:26px;text-align:center;">
+    Your Ride
+    </p>
+    <form>
+            <label for="user">Name:</label><br>
+            <input type="text" id="user" name="user" readonly><br><br>
+
+            <label for="pass" style= "display: inline-block">Start:</label>
+            <input type="text" id="pass" name="pass" readonly>
+            <p style= "display: inline-block"> &emsp;</p>
+            <label for="pass1" style= "display: inline-block">End:</label>
+            <input type="text" id="pass1" name="pass1" readonly><br><br>
+
+            <label for="pass2">Description:</label><br>
+            <input type="text" id="pass2" name="pass2" readonly style="height:60px; width:450px;"><br><br>
+
+    </form>
+    <hr>
+    <p>When:</p>
+
+    <form>
+         <label for="dept" style= "display: inline-block">Departure:</label>
+         <input type="text" id="dept" name="pass" readonly>
+         <p style= "display: inline-block"> &emsp;</p>
+         <label for="arrival" style= "display: inline-block">Arrival:</label>
+         <input type="text" id="arrival" name="pass1" readonly>
+    </form>
+
+  <div style="text-align:justify; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+    <p style="color:#1C4E77;font-size:18px;">
+        Days:
+    </p>
+    <ul style="color:#1C4E77;font-size:14px; list-style-type:none;">
+      <li><input type="checkbox"> Monday</li>
+      <li><input type="checkbox"> Tuesday</li>
+      <li><input type="checkbox"> Wednesday</li>
+      <li><input type="checkbox"> Thursday</li>
+      <li><input type="checkbox"> Friday</li>
+      <li><input type="checkbox"> Saturday</li>
+      <li><input type="checkbox"> Sunday</li>
+    </ul>
+      <a href="EditarRide.html"> <button type="button" class="button button1">Edit Ride</button>  </a>
+    </div>
+
+
+
+</body>
+</html>
