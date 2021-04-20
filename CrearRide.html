@@ -17,9 +17,11 @@
     var departure = document.getElementById('departure').value;
     var arrival = document.getElementById('arrival').value;
     var currentUser = localStorage.getItem("currentUser");
+        var currentUserObj = JSON.parse(currentUser);
+        var currentUserName = currentUserObj.lastRide;
 
 
-    const ride = { rideName: rideName, start: start, end: end, description: description, departure:departure, arrival:arrival, creador:currentUser};
+    const ride = { rideName: rideName, start: start, end: end, description: description, departure:departure, arrival:arrival, creador:currentUserName};
     const lastRide = {lastRide:rideName}
     localStorage.setItem(rideName, JSON.stringify(ride));
     localStorage.setItem("lastRide", JSON.stringify(lastRide));

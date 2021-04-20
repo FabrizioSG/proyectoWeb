@@ -8,24 +8,51 @@
 <script>
 
     function store(){
+        var good = "";
+        for (var x=0; x < localStorage.length; x++){
+            var userName = document.getElementById('user').value;
 
+            const userStr = localStorage.getItem(localStorage.key(x));
 
-    var usuario = document.getElementById("user").value;
-    var nombre = document.getElementById('nombre').value;
-    var last = document.getElementById('apell').value;
-    var pw = document.getElementById('pass').value;
-    var phone = document.getElementById('phone').value;
+            const userObj = JSON.parse(userStr);
 
+            var storedName = userObj.name;
 
-    const user = { name: usuario, password: pw, nombre: nombre, apellido: last, telefono:phone};
+            if(storedName != undefined){
+               if(storedName == userName){
+                alert("Username already in use. Please select a different one");
+                good = "1";
 
-    localStorage.setItem(usuario, JSON.stringify(user));
+            }
+            }
+        }
+        if(good == "1"){
 
-    window.alert('Your account has been created');
+        }else{
 
+            var usuario = document.getElementById("user").value;
+                var nombre = document.getElementById('nombre').value;
+                var last = document.getElementById('apell').value;
+                var pw = document.getElementById('pass').value;
+                var phone = document.getElementById('phone').value;
+                var pw2 = document.getElementById('pass1').value;
 
+                if(usuario != "" && nombre != "" && last != "" && pw != "" && phone != ""){
+                    if(pw == pw2){
+                        const user = { name: usuario, password: pw, nombre: nombre, apellido: last, telefono:phone};
 
+                    localStorage.setItem(usuario, JSON.stringify(user));
 
+                    window.alert('Your account has been created');
+                    }else{
+                        alert("Passwords don't match!")
+                    }
+
+                }else{
+                    alert("Please fill all account information");
+                }
+
+        }
 }
     </script>
 </head>
