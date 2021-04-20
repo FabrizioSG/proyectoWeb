@@ -22,7 +22,9 @@
 
         if(userName == storedName && userPw == storedPw){
             window.close();
-            localStorage.setItem('currentUser', userName);
+            const lastRide = {lastRide:userName}
+            localStorage.setItem('currentUser', JSON.stringify(lastRide));
+
             window.open("Dashboard.html","myWindow");
 
 

@@ -17,11 +17,12 @@
 
             var storedName = rideObj.rideName;
             var storedCreador = rideObj.creador;
-            var current = localStorage.getItem("currentUser");
+            var currentObj = localStorage.getItem("currentUser");
+            var currentStr = JSON.parse(currentObj)
 
             if(storedName == undefined){
 
-            }else if(storedCreador == current){
+            }else if(storedCreador == currentStr.lastRide){
 
                 var largo = Object.keys(rideObj).length;
                 var text = "";
