@@ -7,10 +7,11 @@
 
 <script>
     function fill(){
-        var lastRide = localStorage.getItem("lastRide");
+        var lastObj = localStorage.getItem("lastRide");
 
-        const rideStr = localStorage.getItem(lastRide);
+        const lastRideStr = JSON.parse(lastObj);
 
+        const rideStr = localStorage.getItem(lastRideStr.lastRide);
 
         const rideObj = JSON.parse(rideStr);
 
@@ -21,7 +22,7 @@
         var storedDescription = rideObj.description;
         var storedStart = rideObj.start;
         var storedEnd = rideObj.end;
-
+        var lastRide = rideStr.lastRide;
 
         document.getElementById("user").value = storedName;
         document.getElementById("pass").value = storedStart;

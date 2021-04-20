@@ -20,9 +20,10 @@
 
 
     const ride = { rideName: rideName, start: start, end: end, description: description, departure:departure, arrival:arrival, creador:currentUser};
-
+    const lastRide = {lastRide:rideName}
     localStorage.setItem(rideName, JSON.stringify(ride));
-    localStorage.setItem("lastRide", rideName);
+    localStorage.setItem("lastRide", JSON.stringify(lastRide));
+
     window.alert('Your ride has been created');
     window.open("VerRide.html","myWindow");
 

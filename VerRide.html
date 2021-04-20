@@ -7,14 +7,13 @@
 
 <script>
     function fill(){
-        var lastRide = localStorage.getItem("lastRide");
+        var lastObj = localStorage.getItem("lastRide");
 
-        const rideStr = localStorage.getItem(lastRide);
+        const lastRideStr = JSON.parse(lastObj);
 
-
+        const rideStr = localStorage.getItem(lastRideStr.lastRide);
 
         const rideObj = JSON.parse(rideStr);
-
 
         var storedName = rideObj.rideName;
         var storedArrival = rideObj.arrival;
