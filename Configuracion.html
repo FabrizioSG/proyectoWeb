@@ -4,8 +4,62 @@
 <meta charset="utf-8" />
 <title>Settings TicoRide</title>
 <link href="style.css" rel="stylesheet" type="text/css">
+
+<script>
+        function fill(){
+        var currentObj = localStorage.getItem("currentUser");
+        var currentStr = JSON.parse(currentObj);
+
+        var currentName = currentStr.lastRide;
+
+
+        const userStr = localStorage.getItem(currentName);
+        const rideObj = JSON.parse(userStr);
+
+        var storedUser = rideObj.name;
+
+        var storedName = rideObj.nombre;
+        var storedLast = rideObj.apellido;
+        var storedPw = rideObj.password;
+        var storedTel = rideObj.telefono;
+
+
+
+        document.getElementById("user").value = storedUser;
+        document.getElementById("apell").value = storedLast;
+        document.getElementById("phone").value = storedTel;
+        document.getElementById("nombre").value = storedName;
+        document.getElementById("pass").value = storedPw;
+
+    }
+    function store(){
+        var usuario = document.getElementById("user").value;
+                var nombre = document.getElementById('nombre').value;
+                var last = document.getElementById('apell').value;
+                var pw = document.getElementById('pass').value;
+                var phone = document.getElementById('phone').value;
+                var pw2 = document.getElementById('pass1').value;
+
+                if(usuario != "" && nombre != "" && last != "" && pw != "" && phone != ""){
+                    if(pw == pw2){
+                        const user = { name: usuario, password: pw, nombre: nombre, apellido: last, telefono:phone};
+
+                    localStorage.setItem(usuario, JSON.stringify(user));
+
+                    window.alert('Your account has been updated');
+                    }else{
+                        alert("Passwords don't match!")
+                    }
+
+                }else{
+                    alert("Please fill all account information");
+                }
+    }
+
+</script>
 </head>
-<body>
+
+<body onload = "fill()">
 <img src="logo.png" alt="Logo" class="center">
  <div class="div1">
     <a href="Dashboard.html"> <button type="button" id="button1" style ="background-color: lightgreen;">Dashboard</button>  </a>
@@ -17,15 +71,30 @@
     Settings
     </p>
 <form class="center">
-            <label for="user">Full name:</label><br>
-            <input type="text" id="user" name="user"><br><br>
-            <label for="pass">Speed Avg:</label><br>
-            <input type="text" id="pass" name="pass"><br><br>
-            <label for="pass1">About me:</label><br>
-            <input type="text" id="pass1" name="pass1" style="height:75px;"><br><br>
+
+
+    <label for="nombre">First name:</label><br>
+            <input type="text" id="nombre" name="nombre"><br>
+    <label for="apell">Last name:</label><br>
+            <input type="text" id="apell" name="apell"><br>
+    <label for="phone">Phone number:</label><br>
+            <input type="number" id="phone" name="phone"><br>
+            <label for="user">Username:</label><br>
+            <input type="text" id="user" name="user" readonly><br>
+            <label for="pass">Password:</label><br>
+            <input type="password" id="pass" name="pass"><br>
+    <label for="pass1">Repeat Password:</label><br>
+            <input type="password" id="pass1" name="pass1"><br>
+
+            <br>
+            <input id="rgstr_btn" type="submit" value="Save" onclick="store()">
+            <br>
+            <br>
             <a href="Dashboard.html">Cancel</a>
-            <button class="button button1">Save</button>
-    </form>
+        </form>
+
+
+
 
 
 
